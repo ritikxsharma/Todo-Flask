@@ -1,0 +1,64 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 50%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left: 340px;
+    margin-top: 100px;
+    box-shadow: 2px 2px 0px 4px gainsboro;
+  }
+
+form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+form button{
+    margin-top: 4px;
+    width: 130px;
+    height: 30px;
+    border-radius: 2px;
+    border: #6271f0;
+    cursor: pointer;
+    background: #6271f0;
+    color: #fff;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f2dede;
+    border-radius: 4px;
+    color: #a94442;
+    margin-top: 10px;
+    animation: blink-text 1s 3;
+}
+
+@keyframes blink-text {
+
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styleEdit.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <title>Edit TODO</title>
+
+    <div class="container">
+
+        <form  method="post" action="/todo/edit/{{todo.id}}"  >
+
+            <label for="title"> Edit Task - {{todo.id}} </label>
+            <input type="text" name="task" id="task" class="task" value="{{todo.task}}">
+            <button type="submit">ADD</button>
+
+        </form>
+
+        {% for msg in get_flashed_messages() %}
+        <div class="alert"> {{msg}} </div>
+        {% endfor %}
+        
+    </div>
+
+
+</head>
+<body>
+    
+</body>
+</html>

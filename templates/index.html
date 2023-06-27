@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>TODO APP</title>
+</head>
+<body>
+
+    <script src="/static/JavaScript.js"></script>
+
+    <div class="container" id="container">
+
+        <div class="text">ONE PLACE for the tasks  <i style="font-size: medium; margin-top: 20px;" class='fa fa-tasks'></i> </div>
+
+        <button class="addBtn" onclick="openOverlay()">Add Task &nbsp; +</button>
+        
+        <div class="overlay" id="overlay">
+
+            <div class="popup">
+                <div>
+                    <span class="close" id="close" onclick="closeOverlay()">&times;</span>
+                </div>
+
+                <form  name="taskForm" id ="taskForm" action="/todo/add", method="post">
+
+                        <label for="task">Todo Task</label><br>
+                        <input type="text" name="task" id="task" placeholder="Enter todo task"><br><br>
+                        
+                        <button type="submit" onclick="closeOverlay()">ADD</button>
+                </form>
+
+            </div>
+
+        </div>
+
+        <header class="heading"> TASKS  </header>
+
+        {% if todo_list|length == 0 %}
+        <div class="alert">NO TASKS ADDED</div>
+        {% endif %}
+
+        {% for todo in todo_list %}
+            <div class="result-box"> 
+                <p class="ui big header"> {{todo.id}} || {{todo.task}} </p>
+
+                {% if todo.status == False %}
+                    <a class="ui grey label"  href="/todo/update/{{todo.id}}" >Not Complete </a> <i class="fa fa-close" > </i>
+                {% else %}
+                    <a class="ui green label" href="/todo/update/{{todo.id}}" >Complete </a> <i class="fa fa-check" > </i>
+
+                {% endif %}
+                
+                <a class="btn" id="deleteBtn"  href="/todo/delete/{{todo.id}}">Delete <i class="fa-solid fa-trash-can"></i> </a>
+                <a class="btn" id="updateBtn" href="/todo/update/{{todo.id}}">Update <i class='fas fa-exchange-alt'></i> </a>
+                <a class="btn" id="editBtn" href="/todo/edit/{{todo.id}}">Edit &nbsp;<i class='fa fa-edit'></i> </a>
+            </div>
+
+        {% endfor %}
+            
+        
+        {% for msg in get_flashed_messages() %}
+            <div class="alert"> {{msg}} </div>
+        {% endfor %}
+
+
+
+    </div>
+    
+    
+</body>
+</html>
+
+
